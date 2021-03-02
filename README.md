@@ -6,4 +6,4 @@ Tested with Adafruit Feather 32u4 Bluefruit LE https://www.adafruit.com/product/
 ## License
 MIT licensed
 
-Copyright (C) 2021 Basien Didier, https://data.bingo
+Copyright (c) 2021 Bastien Didier, https://data.bingo
