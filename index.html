@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Web Bluetooth Adafruit Bluefruit</title>
+	<script src="ble.js" type="text/javascript"></script>
+</head>
+<body>
+	<button id="connect">Connect to Bluefruit</button>
+
+	<button id="on" style="display:none">ON</button>
+	<button id="off" style="display:none">OFF</button>
+
+	<script>
+
+		const connectBtn = document.getElementById("connect");
+		const onBtn = document.getElementById("on");
+		const offBtn = document.getElementById("off");
+
+		connectBtn.addEventListener("click", () => {
+			if(!ble.isReady){
+				ble.connect();
+			} else {
+				ble.disconnect();
+				connectBtn.innerHTML = "Connect to Bluefruit";
+				offBtn.style.display = "none";
+				onBtn.style.display  = "none";
+			}
+		});
+
+		ble.ready(() => {
+
+			connectBtn.innerHTML = "Disconnect to Bluefruit";
+			
+			onBtn.style.display = "block";
+			onBtn.addEventListener("click", (e) => {
+				ble.send("1");
+			});
+
+			offBtn.style.display = "block";
+			offBtn.addEventListener("click", (e) => {
+				ble.send("0");
+			});
+
+		});
+	</script>
+</body>
+</html>
